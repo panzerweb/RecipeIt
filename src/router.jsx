@@ -4,6 +4,8 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Dashboard from "./routes/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import Favorites from "./routes/Favorites";
+import NewRecipe from "./routes/NewRecipe";
 
 export const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -16,5 +18,21 @@ export const router = createBrowserRouter([
         <Dashboard />
       </PrivateRoute>
     ),
+  },
+  {
+    path: "/favorites",
+    element: (
+      <PrivateRoute>
+        <Favorites />
+      </PrivateRoute>
+    )
+  },
+  {
+    path: "/newrecipe",
+    element: (
+      <PrivateRoute>
+        <NewRecipe />
+      </PrivateRoute>
+    )
   },
 ]);
