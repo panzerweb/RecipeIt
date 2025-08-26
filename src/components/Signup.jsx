@@ -4,6 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const result = await signUpNewUser(email, password); // Call context function
+      const result = await signUpNewUser(displayName, email, password); // Call context function
 
       if (result.success) {
         navigate("/dashboard"); // Navigate to dashboard on success
@@ -37,6 +38,17 @@ const Signup = () => {
         <p>
           Already have an account? <Link to="/">Sign in</Link>
         </p>
+        <div className="flex flex-col py-4">
+          {/* <label htmlFor="Display_Name">Display Name</label> */}
+          <input
+            onChange={(e) => setDisplayName(e.target.value)}
+            className="p-3 mt-2"
+            type="text"
+            name="displayName"
+            id="displayName"
+            placeholder="Display Name"
+          />
+        </div>
         <div className="flex flex-col py-4">
           {/* <label htmlFor="Email">Email</label> */}
           <input
