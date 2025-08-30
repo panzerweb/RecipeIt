@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, Link, NavLink } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import Create from './Create';
 
 export const Navbar = () => {
     const { session, signOut } = UserAuth();
@@ -47,17 +48,21 @@ export const Navbar = () => {
             </div>
 
             <div className="max-w-6xl bg-gray-900 px-4 mx-auto mt-5 py-5 shadow-md rounded-xl">
-                <ul className='flex justify-center gap-5'>
-                    <NavLink to='/dashboard' 
+                <ul className='flex justify-between gap-5 items-center'>
+                    <div className="flex gap-3">
+                        <NavLink to='/dashboard' 
                         className={({ isActive }) => (isActive ? 'text-indigo-600 transition-all font-semibold cursor-pointer' : 'text-gray-200 hover:text-indigo-600')}
-                    >
-                        News Feed
-                    </NavLink>
-                    <NavLink to='/favorites' 
-                        className={({ isActive }) => (isActive ? 'text-indigo-600 transition-all font-semibold cursor-pointer' : 'text-gray-200 hover:text-indigo-600')}
-                    >
-                        Favorites
-                    </NavLink>
+                        >
+                            News Feed
+                        </NavLink>
+                        <NavLink to='/favorites' 
+                            className={({ isActive }) => (isActive ? 'text-indigo-600 transition-all font-semibold cursor-pointer' : 'text-gray-200 hover:text-indigo-600')}
+                        >
+                            Favorites
+                        </NavLink>
+                    </div>
+
+                    <Create />
                 </ul>
             </div>
         </nav>

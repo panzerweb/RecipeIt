@@ -6,7 +6,7 @@ const Create = () => {
   return (
     <div className='flex justify-end'>
         <Link to='/newrecipe'>
-            <button className='bg-gray-900 mx-3 my-2'>
+            <button className='bg-gray-900'>
                 <NoteAddIcon fontSize='large' />
             </button>
         </Link>
