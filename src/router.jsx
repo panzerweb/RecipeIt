@@ -6,6 +6,9 @@ import Dashboard from "./routes/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import Favorites from "./routes/Favorites";
 import NewRecipe from "./routes/NewRecipe";
+import { Profile } from "./routes/Profile";
+import { UpdateRecipe } from "./components/updateRecipe";
+import { RecipeItem } from "./components/RecipeItem";
 
 export const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -28,6 +31,14 @@ export const router = createBrowserRouter([
     )
   },
   {
+    path: "/profile",
+    element: (
+      <PrivateRoute>
+        <Profile />
+      </PrivateRoute>
+    )
+  },
+  {
     path: "/newrecipe",
     element: (
       <PrivateRoute>
@@ -35,4 +46,20 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     )
   },
+  {
+    path: "/dashboard/:id",
+    element: (
+      <PrivateRoute>
+        <RecipeItem />
+      </PrivateRoute>
+    )
+  },
+  {
+    path: "/profile/:id",
+    element: (
+      <PrivateRoute>
+        <UpdateRecipe />
+      </PrivateRoute>
+    )
+  }
 ]);
