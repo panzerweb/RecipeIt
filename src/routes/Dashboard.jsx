@@ -1,52 +1,28 @@
 import React, { useState } from "react";
 import { Navbar } from "../components/Navbar";
-import Create from "../components/Create";
 import Card from '../components/Card';
-import { useEffect } from "react";
-import { supabase } from "../supabaseClient";
+import { fetchRecipes } from "../hooks/fetchRecipes";
 
 const Dashboard = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [fetchError, setFetchError] = useState(null);
+  const {data: recipes, isLoading, isError, error} = fetchRecipes();
 
-  useEffect(() => {
-    const fetchRecipes = async () => {
-      const {data, error} = await supabase
-        .from('recipe')
-        .select()
-
-      if (error) {
-        setFetchError(`Error loading recipes: ${error.message}`);
-        setRecipes([])
-      }else{
-        setRecipes(data);
-        setFetchError(null)
-        console.log(data);
-      }
-    }
-    fetchRecipes();
-  }, [])
+  if (isLoading) return <div className="text-gray-400 text-center mt-10">Loading recipe...</div>;
+  if (isError) return <div className="text-red-500 text-center mt-10">Error: {error.message}</div>;
 
   return (
       <>
         <Navbar />
 
-        {fetchError && <p style={{ color: "red" }}>{fetchError}</p>}
-
         <div className="flex mt-8 mb-4 flex-wrap mx-5 gap-5 justify-center">
-          {recipes.length > 0 ? (
+          {
             recipes.map((recipe) => (
               <Card 
                 key={recipe.id}
                 recipe={recipe}
               />
             ))
-          ) : (
-            !fetchError && <p>No recipes found.</p>
-          )}
+          }
         </div>
-
-        {/* <Create /> */}
       </>
     );
 };

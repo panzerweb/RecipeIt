@@ -60,6 +60,11 @@ export const Navbar = () => {
                         >
                             Favorites
                         </NavLink>
+                        <NavLink to='/profile' 
+                            className={({ isActive }) => (isActive ? 'text-indigo-600 transition-all font-semibold cursor-pointer' : 'text-gray-200 hover:text-indigo-600')}
+                        >
+                            My Photos
+                        </NavLink>
                     </div>
 
                     <Create />
