@@ -36,15 +36,14 @@ const Signin = () => {
   return (
     <div>
       <form onSubmit={handleSignIn} className="max-w-md m-auto pt-24">
-        <h2 className="font-bold pb-2">Sign in</h2>
-        <p>
-          Don't have an account yet? <Link to="/signup">Sign up</Link>
-        </p>
+        <h1 className="text-center font-bold">RecipeIt</h1>
+        <h2 className="font-bold pb-2 mt-5">Sign in</h2>
+
         <div className="flex flex-col py-4">
           {/* <label htmlFor="Email">Email</label> */}
           <input
             onChange={(e) => setEmail(e.target.value)}
-            className="p-3 mt-2"
+            className="p-3 mt-2 rounded-md"
             type="email"
             name="email"
             id="email"
@@ -55,13 +54,18 @@ const Signin = () => {
           {/* <label htmlFor="Password">Password</label> */}
           <input
             onChange={(e) => setPassword(e.target.value)}
-            className="p-3 mt-2"
+            className="p-3 mt-2 rounded-md"
             type="password"
             name="password"
             id="password"
             placeholder="Password"
           />
         </div>
+
+        <p className="text-center text-sm">
+          Don't have an account yet? <Link to="/signup">Sign up</Link>
+        </p>
+
         <button className="w-full mt-4">Sign In</button>
         {error && <p className="text-red-600 text-center pt-4">{error}</p>}
       </form>

@@ -34,15 +34,14 @@ const Signup = () => {
   return (
     <div>
       <form onSubmit={handleSignUp} className="max-w-md m-auto pt-24">
-        <h2 className="font-bold pb-2">Sign up today!</h2>
-        <p>
-          Already have an account? <Link to="/">Sign in</Link>
-        </p>
+        <h1 className="text-center font-bold">RecipeIt</h1>
+        <h2 className="font-bold pb-2">Sign up for free!</h2>
+
         <div className="flex flex-col py-4">
           {/* <label htmlFor="Display_Name">Display Name</label> */}
           <input
             onChange={(e) => setDisplayName(e.target.value)}
-            className="p-3 mt-2"
+            className="p-3 mt-2 rounded-md"
             type="text"
             name="displayName"
             id="displayName"
@@ -53,7 +52,7 @@ const Signup = () => {
           {/* <label htmlFor="Email">Email</label> */}
           <input
             onChange={(e) => setEmail(e.target.value)}
-            className="p-3 mt-2"
+            className="p-3 mt-2 rounded-md"
             type="email"
             name="email"
             id="email"
@@ -64,13 +63,18 @@ const Signup = () => {
           {/* <label htmlFor="Password">Password</label> */}
           <input
             onChange={(e) => setPassword(e.target.value)}
-            className="p-3 mt-2"
+            className="p-3 mt-2 rounded-md"
             type="password"
             name="password"
             id="password"
             placeholder="Password"
           />
         </div>
+
+        <p className="text-center text-sm">
+          Already have an account? <Link to="/">Sign in</Link>
+        </p>
+
         <button type="submit" disabled={loading} className="w-full mt-4">
           Sign Up
         </button>
